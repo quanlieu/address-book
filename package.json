@@ -12,12 +12,13 @@
     "test:coverage": "jest --coverage"
   },
   "dependencies": {
+    "firebase": "^4.11.0",
     "normalize.css": "^8.0.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.7",
-    "redux": "^3.7.2",
-    "redux-thunk": "^2.2.0"
+    "react-redux-firebase": "^2.0.5",
+    "redux": "^3.7.2"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",

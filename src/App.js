@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 
 import Login from './pages/Login';
 import Main from './pages/Main';
-import { logIn, logOut } from './redux/actions/auth';
+
+import { getUid } from './redux/reducers/selectors';
 
 class App extends React.PureComponent {
   constructor(props) {
@@ -11,14 +12,12 @@ class App extends React.PureComponent {
   }
 
   render() {
-    return <div>{this.props.authenticated ? <Main /> : <Login />}</div>;
+    return <div>{this.props.uid ? <Main /> : <Login />}</div>;
   }
 }
 
-const mapStateToProps = (state = {}) => ({
-  authenticated: state.auth.authenticated
+const mapStateToProps = state => ({
+  uid: getUid(state)
 });
 
-const mapDispatchToProps = { logIn, logOut };
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps)(App);

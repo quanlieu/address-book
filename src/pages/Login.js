@@ -1,6 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { login } from '../redux/actions/auth';
+import { firebaseConnect } from 'react-redux-firebase';
 
 class Login extends React.PureComponent {
   constructor(props) {
@@ -9,7 +8,9 @@ class Login extends React.PureComponent {
   }
 
   handleLoginClick(e) {
-    this.props.login();
+    const { firebase } = this.props;
+    const provider = new firebase.auth.GoogleAuthProvider();
+    firebase.auth().signInWithPopup(provider);
   }
 
   render() {
@@ -22,10 +23,4 @@ class Login extends React.PureComponent {
   }
 }
 
-const mapStateToProps = (state = {}) => ({
-  authenticated: state.auth.authenticated
-});
-
-const mapDispatchToProps = { login };
-
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default firebaseConnect()(Login);
