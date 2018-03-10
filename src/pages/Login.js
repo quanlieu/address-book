@@ -1,5 +1,6 @@
 import React from 'react';
 import { firebaseConnect } from 'react-redux-firebase';
+import PropTypes from 'prop-types';
 
 class Login extends React.PureComponent {
   constructor(props) {
@@ -22,5 +23,9 @@ class Login extends React.PureComponent {
     );
   }
 }
+
+Login.propTypes = {
+  firebase: PropTypes.object.isRequired
+};
 
 export default firebaseConnect()(Login);

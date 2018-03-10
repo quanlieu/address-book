@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { firebaseConnect } from 'react-redux-firebase';
+import PropTypes from 'prop-types';
 
 import { getAddresses } from '../redux/reducers/selectors';
 
@@ -21,12 +22,21 @@ class Main extends React.PureComponent {
     return (
       <div>
         Main page
-        {addresses && addresses.map((v, k) => <div key={k}>{v}</div>)}
+        {addresses.map((v, k) => <div key={k}>{v}</div>)}
         <button onClick={this.handleLogoutClick}>Logout</button>
       </div>
     );
   }
 }
+
+Main.defaultProps = {
+  addresses: []
+};
+
+Main.propTypes = {
+  addresses: PropTypes.array,
+  firebase: PropTypes.object.isRequired
+};
 
 const mapStateToProps = state => ({
   addresses: getAddresses(state)

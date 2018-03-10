@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import Login from './pages/Login';
 import Main from './pages/Main';
@@ -19,5 +20,9 @@ class App extends React.PureComponent {
 const mapStateToProps = state => ({
   uid: getUid(state)
 });
+
+App.propTypes = {
+  uid: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+};
 
 export default connect(mapStateToProps)(App);
