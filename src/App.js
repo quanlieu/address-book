@@ -25,4 +25,5 @@ App.propTypes = {
   uid: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
+export { App };
 export default connect(mapStateToProps)(App);
