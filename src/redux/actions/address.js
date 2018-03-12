@@ -1,4 +1,7 @@
-export const updateCurrentAddress = address => ({
-  type: 'UPDATE_CURRENT_ADDRESS',
-  address
-});
+export const updateCurrentAddress = address => {
+  console.log(address);
+  return {
+    type: 'UPDATE_CURRENT_ADDRESS',
+    address
+  };
+};
