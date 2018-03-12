@@ -33,11 +33,13 @@ class Main extends React.PureComponent {
     const { addresses } = this.props;
 
     return (
-      <div>
-        Main page
+      <div className="main">
+        <div className="main__title">Contact list</div>
+        <button className="btn main__logout" onClick={this.handleLogoutClick}>
+          Logout
+        </button>
         <AddressList addresses={addresses} onDelete={this.deleteAddress} />
         <AddressInputTextbox onAdd={this.addAddress} />
-        <button onClick={this.handleLogoutClick}>Logout</button>
         <AddressInputMap />
       </div>
     );

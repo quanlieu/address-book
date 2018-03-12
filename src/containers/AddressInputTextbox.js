@@ -65,8 +65,9 @@ class AddressInputTextbox extends React.PureComponent {
     const { street, ward, district, city, country } = this.state;
 
     return (
-      <div>
+      <div className="address-input">
         <input
+          className="address-input__text-box"
           type="text"
           placeholder="street"
           name="street"
@@ -74,6 +75,7 @@ class AddressInputTextbox extends React.PureComponent {
           onChange={this.handleInput}
         />
         <input
+          className="address-input__text-box"
           type="text"
           placeholder="ward"
           name="ward"
@@ -81,6 +83,7 @@ class AddressInputTextbox extends React.PureComponent {
           onChange={this.handleInput}
         />
         <input
+          className="address-input__text-box"
           type="text"
           placeholder="district"
           name="district"
@@ -88,6 +91,7 @@ class AddressInputTextbox extends React.PureComponent {
           onChange={this.handleInput}
         />
         <input
+          className="address-input__text-box"
           type="text"
           placeholder="city"
           name="city"
@@ -95,13 +99,19 @@ class AddressInputTextbox extends React.PureComponent {
           onChange={this.handleInput}
         />
         <input
+          className="address-input__text-box"
           type="text"
           placeholder="country"
           name="country"
           value={country}
           onChange={this.handleInput}
         />
-        <button onClick={this.handleClickAdd}>Add</button>
+        <button
+          className="address-input__submit btn"
+          onClick={this.handleClickAdd}
+        >
+          Add
+        </button>
       </div>
     );
   }

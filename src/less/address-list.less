@@ -1,0 +1,48 @@
+.address-list {
+  padding: 0 0.5em;
+  font-size: 1.2em;
+  width: 100%;
+  box-sizing: border-box;
+  
+  @media screen and (min-width: @desktop) {
+    display: table;
+  }
+
+  &__row {
+    padding: 0.2em;
+    text-align: center;
+    background-color: white;
+    &:nth-child(even) {
+      color: white;
+      background-color: #9f99b4;
+    }
+    position: relative;
+    @media screen and (min-width: @desktop) {
+      display: table-row;
+      text-align: left;
+    }
+  }
+
+  &__cell {
+    margin: 0.2em 0;
+    @media screen and (min-width: @desktop) {
+      display: table-cell;
+      padding: 0.5em;
+    }
+  }
+
+  &__delete {
+    position: absolute;
+    width: 2em;
+    height: 2em;
+    top: 0.1em;
+    right: 0.1em;
+    background-color: transparent;
+    color: crimson;
+    @media screen and (min-width: @desktop) {
+      position: static;
+      display: table-cell;
+      padding: 0.5em;
+    }
+  }
+}

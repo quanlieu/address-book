@@ -14,14 +14,24 @@ class AddressList extends React.PureComponent {
   render() {
     const { addresses } = this.props;
     return (
-      <div>
+      <div className="address-list">
         {Object.keys(addresses).map(v => {
           const { street, ward, district, city, country } = addresses[v];
           return (
-            <div key={v}>
-              {street} {ward} {district} {city} {country}
-              <button data-id={v} onClick={this.handleDeleteClick}>
-                Delete
+            <div className="address-list__row" key={v}>
+              <div className="address-list__cell">
+                <b>{street}</b>
+              </div>
+              <div className="address-list__cell">{ward}</div>
+              <div className="address-list__cell">{district}</div>
+              <div className="address-list__cell">{city}</div>
+              <div className="address-list__cell">{country}</div>
+              <button
+                className="address-list__delete btn"
+                data-id={v}
+                onClick={this.handleDeleteClick}
+              >
+                x
               </button>
             </div>
           );

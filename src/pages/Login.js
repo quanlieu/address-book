@@ -17,7 +17,7 @@ class Login extends React.PureComponent {
   render() {
     return (
       <div className="login">
-        <div className="login__text">Online address book</div>
+        <div className="login__title">Online address book</div>
         <button className="login__btn btn" onClick={this.handleLoginClick}>
           LOGIN WITH GOOGLE
         </button>
