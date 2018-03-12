@@ -57,7 +57,7 @@ describe('<AddressInputMap />', () => {
     AddressInputMap.addressBuilder = jest.fn();
     AddressInputMap.addressBuilder.mockReturnValue(expectedParams);
 
-    wrapper.instance().handleClickMap(null, null, clickEvent);
+    wrapper.instance().handleMapClick(null, null, clickEvent);
     const expectedMarkerPosition = wrapper.state().markerPosition;
     expect(expectedMarkerPosition).toEqual({ lat: 5, lng: 10 });
     expect(mockUpdateCurrentAddress.mock.calls[0]).toEqual([expectedParams]);

@@ -15,7 +15,7 @@ class AddressInputMap extends React.PureComponent {
       markerPosition: undefined
     };
 
-    this.handleClickMap = this.handleClickMap.bind(this);
+    this.handleMapClick = this.handleMapClick.bind(this);
   }
 
   componentDidMount() {
@@ -38,7 +38,7 @@ class AddressInputMap extends React.PureComponent {
     }
   }
 
-  handleClickMap(mapProps, map, clickEvent) {
+  handleMapClick(mapProps, map, clickEvent) {
     const { latLng } = clickEvent;
     const lat = latLng.lat();
     const lng = latLng.lng();
@@ -106,7 +106,7 @@ class AddressInputMap extends React.PureComponent {
         google={this.props.google}
         zoom={15}
         initialCenter={coords}
-        onClick={this.handleClickMap}
+        onClick={this.handleMapClick}
       >
         <Marker position={markerPosition} />
       </Map>
