@@ -34,4 +34,5 @@ Login.propTypes = {
   firebase: PropTypes.object.isRequired
 };
 
+export { Login };
 export default firebaseConnect()(Login);
