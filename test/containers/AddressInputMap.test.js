@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 
 import { AddressInputMap } from '../../src/containers/AddressInputMap';
 
-describe.only('<AddressInputMap />', () => {
+describe('<AddressInputMap />', () => {
   const mockUpdateCurrentAddress = jest.fn();
   const wrapper = shallow(
     <AddressInputMap updateCurrentAddress={mockUpdateCurrentAddress} />
