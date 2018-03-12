@@ -16,9 +16,11 @@ class Login extends React.PureComponent {
 
   render() {
     return (
-      <div>
-        Login page
-        <button onClick={this.handleLoginClick}>Login</button>
+      <div className="login">
+        <div className="login__text">Online address book</div>
+        <button className="login__btn btn" onClick={this.handleLoginClick}>
+          LOGIN WITH GOOGLE
+        </button>
       </div>
     );
   }

@@ -1,0 +1,26 @@
+@login-blue: #35bcf6;
+
+.login {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  &__text {
+    color: gray;
+    font-size: 2em;
+    font-weight: 700;
+    margin-bottom: 0.5em;
+  }
+
+  &__btn {
+    padding: 10px 0px;
+    width: 200px;
+    background-color: @login-blue;
+    color: white;
+    &:hover {
+      background-color: darken(@login-blue, 10%)
+    }
+  }
+}
