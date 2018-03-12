@@ -67,7 +67,7 @@ class AddressInputTextbox extends React.PureComponent {
     return (
       <div className="address-input">
         <input
-          className="address-input__text-box"
+          className="address-input__text-box address-input__street"
           type="text"
           placeholder="street"
           name="street"
