@@ -61,4 +61,5 @@ const mapStateToProps = state => ({
   uid: getUid(state)
 });
 
+export { Main };
 export default compose(firebaseConnect(), connect(mapStateToProps))(Main);

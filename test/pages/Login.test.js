@@ -4,14 +4,14 @@ import { shallow } from 'enzyme';
 import { Login } from '../../src/pages/Login';
 
 describe('<Login />', () => {
-  test('should call sign in from firebase', () => {
+  test('should call firebase.signInWithPopup', () => {
     const expectedProvider = { provider: 'A provider' };
     const mockSigInWithPopup = jest.fn();
 
-    let auth = () => ({ signInWithPopup: mockSigInWithPopup });
-    auth.GoogleAuthProvider = () => expectedProvider;
+    let mockAuth = () => ({ signInWithPopup: mockSigInWithPopup });
+    mockAuth.GoogleAuthProvider = () => expectedProvider;
 
-    const wrapper = shallow(<Login firebase={{ auth }} />);
+    const wrapper = shallow(<Login firebase={{ auth: mockAuth }} />);
     wrapper.instance().handleLoginClick();
     expect(mockSigInWithPopup.mock.calls[0]).toEqual([expectedProvider]);
   });
