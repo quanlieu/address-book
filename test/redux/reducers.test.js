@@ -1,4 +1,5 @@
 import address from '../../src/redux/reducers/address';
+import load from '../../src/redux/reducers/load';
 
 describe('Address reducers', () => {
   test('should return default address', () => {
@@ -28,5 +29,19 @@ describe('Address reducers', () => {
         address: expectedState
       })
     ).toEqual(expectedState);
+  });
+});
+
+describe('Loading reducers', () => {
+  test('should return loading false', () => {
+    expect(load(undefined, { type: 'Wrong type' })).toEqual({ loading: false });
+    expect(
+      load(undefined, { type: '@@reactReduxFirebase/SET_PROFILE' })
+    ).toEqual({ loading: false });
+  });
+  test('should return loading true', () => {
+    expect(load(undefined, { type: '@@reactReduxFirebase/LOGIN' })).toEqual({
+      loading: true
+    });
   });
 });
