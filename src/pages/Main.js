@@ -6,7 +6,8 @@ import PropTypes from 'prop-types';
 
 import { getAddresses, getUid } from '../redux/reducers/selectors';
 import AddressList from '../components/AddressList';
-import AddressInput from '../components/AddressInput';
+import AddressInputTextbox from '../containers/AddressInputTextbox';
+import AddressInputMap from '../containers/AddressInputMap';
 
 class Main extends React.PureComponent {
   constructor(props) {
@@ -35,8 +36,9 @@ class Main extends React.PureComponent {
       <div>
         Main page
         <AddressList addresses={addresses} onDelete={this.deleteAddress} />
-        <AddressInput onAdd={this.addAddress} />
+        <AddressInputTextbox onAdd={this.addAddress} />
         <button onClick={this.handleLogoutClick}>Logout</button>
+        <AddressInputMap />
       </div>
     );
   }

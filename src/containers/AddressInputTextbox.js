@@ -1,7 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-class AddressList extends React.PureComponent {
+import { connect } from 'react-redux';
+
+import { updateCurrentAddress } from '../redux/actions/address';
+
+class AddressInputTextbox extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = { street: '', ward: '', district: '', city: '', country: '' };
@@ -10,13 +14,32 @@ class AddressList extends React.PureComponent {
     this.handleClickAdd = this.handleClickAdd.bind(this);
   }
 
+  componentWillReceiveProps(nextProps) {
+    const {
+      streetNumber,
+      route,
+      ward,
+      district,
+      city,
+      country
+    } = nextProps.address;
+
+    this.setState({
+      street: streetNumber + ' ' + route,
+      ward,
+      district,
+      city,
+      country
+    });
+  }
+
   handleInput(e) {
     const { name, value } = e.currentTarget;
     this.setState({ [name]: value });
   }
 
   handleClickAdd(e) {
-    if (!AddressList.validateAddressInput(this.state)) {
+    if (!AddressInputTextbox.validateAddressInput(this.state)) {
       return;
     }
     const { street, ward, district, city, country } = this.state;
@@ -40,6 +63,7 @@ class AddressList extends React.PureComponent {
 
   render() {
     const { street, ward, district, city, country } = this.state;
+
     return (
       <div>
         <input
@@ -74,6 +98,7 @@ class AddressList extends React.PureComponent {
           type="text"
           placeholder="country"
           name="country"
+          value={country}
           onChange={this.handleInput}
         />
         <button onClick={this.handleClickAdd}>Add</button>
@@ -82,8 +107,14 @@ class AddressList extends React.PureComponent {
   }
 }
 
-AddressList.propTypes = {
+AddressInputTextbox.propTypes = {
   onAdd: PropTypes.func.isRequired
 };
 
-export default AddressList;
+const mapStateToProps = state => ({ address: state.address });
+
+const mapDispatchToProps = { updateCurrentAddress };
+
+export default connect(mapStateToProps, mapDispatchToProps)(
+  AddressInputTextbox
+);

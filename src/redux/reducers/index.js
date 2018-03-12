@@ -1,4 +1,6 @@
 import { combineReducers } from 'redux';
 import { firebaseReducer } from 'react-redux-firebase';
 
-export default combineReducers({ firebase: firebaseReducer });
+import address from './address';
+
+export default combineReducers({ firebase: firebaseReducer, address });
