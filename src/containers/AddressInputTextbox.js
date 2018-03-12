@@ -112,6 +112,11 @@ class AddressInputTextbox extends React.PureComponent {
         >
           Add
         </button>
+        <div className="address-input__note">
+          (You can fill the textboxes above or click the map to fill for you. In
+          case of testboxes, street is required and you must fill either ward -
+          district or city)
+        </div>
       </div>
     );
   }
