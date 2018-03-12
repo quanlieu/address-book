@@ -35,6 +35,7 @@ class AddressInputTextbox extends React.PureComponent {
 
   handleInput(e) {
     const { name, value } = e.currentTarget;
+    console.log(name, value, e)
     this.setState({ [name]: value });
   }
 
@@ -130,6 +131,7 @@ const mapStateToProps = state => ({ address: state.address });
 
 const mapDispatchToProps = { updateCurrentAddress };
 
+export { AddressInputTextbox };
 export default connect(mapStateToProps, mapDispatchToProps)(
   AddressInputTextbox
 );
