@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 import Login from './pages/Login';
 import Main from './pages/Main';
 
+import Loading from './components/Loading';
+
 import { getUid } from './redux/reducers/selectors';
 
 class App extends React.PureComponent {
@@ -13,15 +15,20 @@ class App extends React.PureComponent {
   }
 
   render() {
+    if (this.props.loading) {
+      return <Loading />;
+    }
     return <div>{this.props.uid ? <Main /> : <Login />}</div>;
   }
 }
 
 const mapStateToProps = state => ({
+  loading: state.load.loading,
   uid: getUid(state)
 });
 
 App.propTypes = {
+  loading: PropTypes.bool,
   uid: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
