@@ -5,12 +5,12 @@ import rootReducer from './reducers';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const firebaseConfig = {
-  apiKey: 'AIzaSyDAslG8GCT2WQV99lrfi0yM_J4dD1Ojl30',
-  authDomain: 'kyne-project.firebaseapp.com',
-  databaseURL: 'https://kyne-project.firebaseio.com',
-  projectId: 'kyne-project',
+  apiKey: 'AIzaSyB-EQGqpUFEdLlXRQ6cjAFZjQDVjGnnNFE',
+  authDomain: 'address-book-bdae3.firebaseapp.com',
+  databaseURL: 'https://address-book-bdae3.firebaseio.com',
+  projectId: 'address-book-bdae3',
   storageBucket: '',
-  messagingSenderId: '938781006943'
+  messagingSenderId: '468194465677'
 };
 const rrfConfig = {
   userProfile: 'users'
