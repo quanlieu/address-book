@@ -1,15 +1,38 @@
-## Start
+# Online address book
+This is a webapp to store address book online.
+Go to: https://address-book-bdae3.firebaseapp.com
 
-`yarn install`
+## Usage
+Sign in with your Google account.
+You can add address by input into all the textboxes.
+Or you can just click/tap on the Google map and let it fill for you.
+Validation rules:
+- Street textbox is always required, 
+- if "city" is present, then "ward" and "district" are not required,
+- if "city" is not present, then both "ward" and "district" are required.
 
-`yarn start`
+## Tech
+This webapp is written in React - Redux.
+Store database and authenticate user with firebase.
+Also hosted on firebase to simplify API configuration.
+Used the following library:
+- `react-redux-firebase` to combine redux store with firebase since they can both manage state
+- `google-maps-react` to integrate React with Google map API
+- `prop-types`
+- `jest` and `Enzyme`
+- `less`
+- `webpack`
+- `prettier`, `eslint`
 
-## Before commit run
+## Installation
+### Start
+`yarn install` then `yarn start`
 
-`yarn test`
+### Before commit run
+`yarn test` and `yarn lint`
 
-`yarn lint`
+### Unit testing
+`yarn test` or `yarn test:coverage`
 
-## Build
-
+### Build
 `yarn build`
