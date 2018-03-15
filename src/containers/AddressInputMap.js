@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { updateCurrentAddress } from '../redux/actions/address';
+import GoogleMapWrapper from '../components/GoogleMapWrapper';
+import { mapApiKey } from '../config';
 
 class AddressInputMap extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      noLocationService: false,
-      coords: undefined,
-      markerPosition: undefined
+      coords: undefined
     };
 
     this.handleMapClick = this.handleMapClick.bind(this);
@@ -18,25 +18,20 @@ class AddressInputMap extends React.PureComponent {
 
   componentDidMount() {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        position => {
-          this.setState({
-            coords: {
-              lat: position.coords.latitude,
-              lng: position.coords.longitude
-            }
-          });
-        },
-        () => {
-          this.setState({ noLocationService: true });
-        }
-      );
-    } else {
-      this.setState({ noLocationService: true });
+      navigator.geolocation.getCurrentPosition(position => {
+        this.setState({
+          coords: {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          }
+        });
+      });
     }
   }
 
-  handleMapClick(e) {}
+  handleMapClick(result) {
+    this.props.updateCurrentAddress(AddressInputMap.addressBuilder(result));
+  }
 
   static addressBuilder(components) {
     var result = {
@@ -77,13 +72,14 @@ class AddressInputMap extends React.PureComponent {
   }
 
   render() {
-    const { noLocationService, coords, markerPosition } = this.state;
-
-    if (!noLocationService && !coords) {
-      return <div />;
-    }
-
-    return <div>Placeholder for map</div>;
+    const { coords, isLoadedPostion } = this.state;
+    return (
+      <GoogleMapWrapper
+        mapApiKey={mapApiKey}
+        startPosition={coords}
+        onInput={this.handleMapClick}
+      />
+    );
   }
 }
 
