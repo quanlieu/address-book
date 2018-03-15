@@ -77,7 +77,7 @@ class AddressInputMap extends React.PureComponent {
       <GoogleMapWrapper
         mapApiKey={mapApiKey}
         startPosition={coords}
-        onInput={this.handleMapClick}
+        onClick={this.handleMapClick}
       />
     );
   }

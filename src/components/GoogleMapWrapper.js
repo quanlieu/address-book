@@ -50,7 +50,7 @@ class GoogleMapWrapper extends React.PureComponent {
     const geocoder = new google.maps.Geocoder();
     geocoder.geocode({ location }, (results, status) => {
       if (status === 'OK') {
-        this.props.onInput(results[0].address_components);
+        this.props.onClick(results[0].address_components);
         this.infoWindow.close();
       } else {
         this.infoWindow.open(this.map, this.marker);
@@ -70,7 +70,7 @@ GoogleMapWrapper.propTypes = {
     lng: PropTypes.number
   }),
   mapApiKey: PropTypes.string.isRequired,
-  onInput: PropTypes.func.isRequired
+  onClick: PropTypes.func.isRequired
 };
 
 GoogleMapWrapper.defaultProps = {
