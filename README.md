@@ -17,9 +17,8 @@ Store database and authenticate user with firebase.
 Also hosted on firebase to simplify API configuration.
 Used the following library:
 - `react-redux-firebase` to combine redux store with firebase since they can both manage state
-- `google-maps-react` to integrate React with Google map API
 - `prop-types`
-- `jest` and `Enzyme`
+- `jest` and `enzyme`
 - `less`
 - `webpack`
 - `prettier`, `eslint`
