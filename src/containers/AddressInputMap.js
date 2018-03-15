@@ -1,7 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
-import { compose } from 'redux';
 import { connect } from 'react-redux';
 
 import { updateCurrentAddress } from '../redux/actions/address';
@@ -38,23 +36,7 @@ class AddressInputMap extends React.PureComponent {
     }
   }
 
-  handleMapClick(mapProps, map, clickEvent) {
-    const { latLng } = clickEvent;
-    const lat = latLng.lat();
-    const lng = latLng.lng();
-    const geocoder = new google.maps.Geocoder();
-    geocoder.geocode({ location: latLng }, (results, status) => {
-      if (status === 'OK') {
-        const address = AddressInputMap.addressBuilder(
-          results[0].address_components
-        );
-        this.props.updateCurrentAddress(address);
-      } else {
-        console.log('Geocoder failed due to: ' + status);
-      }
-    });
-    this.setState({ markerPosition: { lat, lng } });
-  }
+  handleMapClick(e) {}
 
   static addressBuilder(components) {
     var result = {
@@ -101,25 +83,11 @@ class AddressInputMap extends React.PureComponent {
       return <div />;
     }
 
-    return (
-      <Map
-        google={this.props.google}
-        zoom={15}
-        initialCenter={coords}
-        onClick={this.handleMapClick}
-      >
-        <Marker position={markerPosition} />
-      </Map>
-    );
+    return <div>Placeholder for map</div>;
   }
 }
 
 const mapDispatchToProps = { updateCurrentAddress };
 
 export { AddressInputMap };
-export default compose(
-  GoogleApiWrapper({
-    apiKey: 'AIzaSyDAslG8GCT2WQV99lrfi0yM_J4dD1Ojl30'
-  }),
-  connect(null, mapDispatchToProps)
-)(AddressInputMap);
+export default connect(null, mapDispatchToProps)(AddressInputMap);
