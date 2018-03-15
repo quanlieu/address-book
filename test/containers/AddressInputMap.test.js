@@ -2,6 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import { AddressInputMap } from '../../src/containers/AddressInputMap';
+import GoogleMapWrapper from '../../src/components/GoogleMapWrapper';
 
 describe('<AddressInputMap />', () => {
   const mockUpdateCurrentAddress = jest.fn();
@@ -29,39 +30,13 @@ describe('<AddressInputMap />', () => {
     expect(AddressInputMap.addressBuilder(input)).toEqual(expected);
   });
 
-  test('should render Map', () => {
-    expect(wrapper.find('Map').exists()).toBeTruthy();
+  test('should render GoogleMapWrapper', () => {
+    expect(wrapper.find(GoogleMapWrapper).exists()).toBeTruthy();
   });
 
-  test('should set marker position and updateCurrentAddress', () => {
-    const clickEvent = {
-      latLng: {
-        lat: () => 5,
-        lng: () => 10
-      }
-    };
-
-    global.google = {
-      maps: {
-        Geocoder: () => ({
-          geocode: ({}, cb) => {
-            cb([{}], 'OK');
-          }
-        })
-      }
-    };
-
-    const expectedParams = { address: 'An address' };
-
-    const originAddressBuilder = AddressInputMap.addressBuilder;
+  test('should call updateCurrentAddress', () => {
     AddressInputMap.addressBuilder = jest.fn();
-    AddressInputMap.addressBuilder.mockReturnValue(expectedParams);
-
-    wrapper.instance().handleMapClick(null, null, clickEvent);
-    const expectedMarkerPosition = wrapper.state().markerPosition;
-    expect(expectedMarkerPosition).toEqual({ lat: 5, lng: 10 });
-    expect(mockUpdateCurrentAddress.mock.calls[0]).toEqual([expectedParams]);
-
-    AddressInputMap.addressBuilder = originAddressBuilder;
+    wrapper.instance().handleMapClick();
+    expect(mockUpdateCurrentAddress.mock.calls.length).toBe(1);
   });
 });
